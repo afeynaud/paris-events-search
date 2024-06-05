@@ -1,31 +1,21 @@
-import { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { Box } from "@mui/material";
-import { useStore } from "../useStore";
+import { CityEvent } from '../types/CityEvent';
 import DOMPurify from "dompurify";
 
 interface MapProps {
-    posix: LatLngExpression | LatLngTuple,
-    zoom?: number,
+    posix: LatLngExpression | LatLngTuple;
+    zoom?: number;
+    events: CityEvent[];
 }
 
 const defaults = {
     zoom: 13,
-}
+};
 
-const EventsMap = (Map: MapProps) => {
-    const { zoom = defaults.zoom, posix } = Map
-    const { cityEvents, getCityEvents } = useStore((state) => ({
-        cityEvents: state.cityEvents,
-        getCityEvents: state.getCityEvents,
-    }));
-
-    useEffect(() => {
-        getCityEvents();
-    }, [getCityEvents]);
-
-    if (cityEvents.length === 0) {
+const EventsMap = ({ zoom = defaults.zoom, posix, events }: MapProps) => {
+    if (events.length === 0) {
         return <div>Loading...</div>;
     }
 
@@ -43,7 +33,7 @@ const EventsMap = (Map: MapProps) => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {cityEvents.map((event) => {
+                {events.map((event) => {
                     if (event.lat_lon && event.lat_lon.lat != null && event.lat_lon.lon != null) {
                         return (
                             <Marker key={event.id} position={[event.lat_lon.lat, event.lat_lon.lon]} draggable={false}>
@@ -60,7 +50,7 @@ const EventsMap = (Map: MapProps) => {
                 })}
             </MapContainer>
         </Box>
-    )
-}
+    );
+};
 
-export default EventsMap
+export default EventsMap;
