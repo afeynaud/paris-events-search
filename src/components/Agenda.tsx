@@ -1,4 +1,4 @@
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+ï»¿import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { Link } from 'react-router-dom';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -22,8 +22,8 @@ const localizer = dateFnsLocalizer({
 });
 
 const messages = {
-    allDay: 'Toute la journée',
-    previous: 'Précédent',
+    allDay: 'Toute la journÃ©e',
+    previous: 'PrÃ©cÃ©dent',
     next: 'Suivant',
     today: "Aujourd'hui",
     month: 'Mois',
@@ -32,7 +32,7 @@ const messages = {
     agenda: 'Agenda',
     date: 'Date',
     time: 'Heure',
-    event: 'Événement',
+    event: 'Ã‰vÃ©nement',
     showMore: (total: number) => `+ ${total} plus`,
 };
 

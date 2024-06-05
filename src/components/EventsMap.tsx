@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+ï»¿import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from 'react-router-dom';
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import { Box } from "@mui/material";
@@ -41,7 +41,7 @@ const EventsMap = ({ zoom = defaults.zoom, posix, events }: MapProps) => {
                                 <Popup>
                                     {event.title}
                                     <p>
-                                        <Link to={`/event/${event.id}`}>Détail de l'événement</Link>
+                                        <Link to={`/event/${event.id}`}>DÃ©tail de l'Ã©vÃ©nement</Link>
                                     </p>
                                 </Popup>
                             </Marker>
