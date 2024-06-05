@@ -59,6 +59,14 @@ button:focus-visible {
     row-gap: 10rem;
 }
 
+.calendar a {
+    color: #FFFFFF;
+}
+
+.calendar .rbc-agenda-event-cell a {
+    color: #000000;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
